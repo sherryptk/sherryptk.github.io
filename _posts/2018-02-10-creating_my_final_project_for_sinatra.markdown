@@ -1,0 +1,18 @@
+---
+layout: post
+title:      "Creating my final project for Sinatra"
+date:       2018-02-10 15:55:51 +0000
+permalink:  creating_my_final_project_for_sinatra
+---
+
+
+This project was fun to plan, I liked having the freedom to choose our own domain and be creative. It also felt extra meaningful to write code for something I had thought up and was now executing.  I'm fascinated by the mysery surrounding sleep, how we spend a third of our lives asleep yet understand so little about the need for it or why we dream, so I created a journal that allows a user to record and share their dreams with others. I started by figuring out what I wanted for the columns in my tables and what associations my models would have. Initially, knowing when to have a join table versus a simple “has many through” relationship was confusing to me. I had three models, dream, user and theme, and I wasn’t sure which would work. I decided to start with “has many through” and this worked until I needed all the themes that belonged to a dream as well as all the dreams that belonged to a theme. I then created a join table and all the associations were finally working.
+
+Another tricky part I hit in my process was adding a date entry in my dream table. I knew this might pose as a challenge before we hadn’t really covered dates in any of the labs, but I wanted to give myself a challenge. I first tried using a date picker in my form, where it shows a calendar and allows the user to pick a date. I loved the way this looked in the form but was having a hard time getting the data to come through my params hash. I’m still not sure if using that type of form is possible with activerecord and sinatra, but I decided instead to use a text form and create a value of “mm/dd/yyyy” to let the user know how to enter their date. In researching the date picker, I stumbled across strftime which let me format the date the way I wanted in my views, but I ran into two issues before nailing this down. 
+
+First, I found that if I accidently created a dream without a date, any page I had used strftime on would break. The error when I ran shotgun said I couldn’t use strftime on a nilclass. This prompted me to add user validation that redirected the user back to the create a dream page with a flash message error that said to be sure to fill in all fields. That solved this issue but then I realized that the dates entered were being recognized as dd/mm/yyyy. This meant that the month and dates were being transposed in my views and that I couldn’t enter a date with a “day” over 12, since it was interpreting it as the month. I could have let it go and asked the user to enter the date in dd/mm/yyyy format, but this felt like cheating, since it’s not a format we use in the US. Luckily I did some googling and discovered the american_date gem. I just added it to my gemfile, ran bundle install and just like that, my dates were now displaying correctly.
+
+It was also fun adding flash messages letting a user know if their submission was successful for not. I liked making the messages as specific as possible, for instance letting a user know they couldn’t edit another user’s dream or delete another user’s dream instead of making that a single “can’t make changes to another user’s dream”. I’ve been on site’s that weren’t clear with their error messages and it can be frustrating, I appreciate details like this that make the error more clear.
+
+Overall I enjoyed working on this project a lot, it was great being able to create something completely on my own. I was overwhelmed and intimidated by learning Sinatra in the beginning and it’s great to be able to feel I have a good understanding of it now and can create my own application.
+ 
