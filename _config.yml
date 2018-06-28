@@ -4,7 +4,7 @@ header-img: img/home-bg.png
 email: sherryptk@gmail.com
 copyright_name: sherryptk
 description: > # this means to ignore newlines until "baseurl:"
-  LearnWithMe!
+  Musings on Ruby on Rails, JavaScript, React and more...
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  sherryptk
